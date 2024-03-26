@@ -28,24 +28,4 @@ router
   //edit route
   router.get("/:id/edit", isLoggedIn, wrapAsync(listingController.renderEditForm));
 
-
-
-// //index route
-// router.get("/", wrapAsync(listingController.index));
-  
-  
-  // show route 
-  //  router.get("/:id", wrapAsync(listingController.showListing));
-  
-  // //create route
-  
-  // router.post("/", isLoggedIn, validateListing, wrapAsync(listingController.createListing));
-  
-  
-  // //update route
-  // router.put("/:id",isLoggedIn, isOwner, validateListing, wrapAsync(listingController.updateListing));
-  
-  // //delete route
-  // router.delete("/:id", isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
-
   module.exports = router;

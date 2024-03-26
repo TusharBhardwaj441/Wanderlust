@@ -68,11 +68,6 @@ async function main(){
     await mongoose.connect(dbUrl);
 }
 
-// app.get("/", (req,res)=>{
-//     res.send("hi, i am root");
-// });
-
-
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -91,17 +86,6 @@ app.use((req, res, next)=> {
     next();
 });
 
-
-// app.get("/demouser", async(req,res)=>{
-//     let fakeUser = new User({
-//         email: "student@gmail.com",
-//         username: "delta-student"
-//     });
-//    let registeredUser = await User.register(fakeUser, "helloworld");
-//    res.send(registeredUser);
-// })
-
-
 // routers 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
@@ -117,7 +101,6 @@ app.all("*", (req, res, next)=>{
 app.use((err, req, res, next) =>{
     let{ statusCode=500, message="Something went wrong!"} = err;
     res.status(statusCode).render("error.ejs", {message});
-    // res.status(statusCode).send(message);
 })
 
 
