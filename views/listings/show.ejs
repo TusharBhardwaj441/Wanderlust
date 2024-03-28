@@ -1,15 +1,47 @@
 <% layout("/layouts/boilerplate") %>
+
+<style>
+    @media (max-width:500px){
+        #map{
+            width: 50vh;
+        }
+        .offset-3{
+            margin: 0;
+        }
+        .card{
+            width: 100%;
+            padding: 0 1rem;
+        }
+        .mobile-fit{
+            width: 100%;
+            padding: 0 1rem;
+        }
+        .mobile-fit-btn-div{
+            width: 100%;
+            display: flex;
+            gap: 3rem;
+            padding: 0 2rem
+        }
+        .mobile-fit-btn{
+            /* width: 100%; */
+            width: 5rem;
+        }
+    }
+</style>
+
+
+
 <script>
     const mapToken =  "<%=process.env.MAP_TOKEN%>" ;
     const listing =  <%-JSON.stringify(listing)%> ;
 </script>
 
 <div class="row mt-3">
-    <div class="col-8 offset-3 ">
+    <div class="col-8 offset-3 mt-3 mobile-fit ">
     <h3><%=listing.title%> </h3>
     </div>
 
-<div class="card col-6 offset-3 show-card listing-card">
+<div class="card col-6 offset-3 show-card listing-card mb-3 ">
 
     <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
   <div class="card-body">
@@ -24,9 +56,9 @@
 
 <% if(currUser && listing.owner._id.equals(currUser._id)) {%>
 
-<div class="btns">
+<div class="btns mobile-fit-btn-div">
     <br>
-    <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
+    <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark col-1 offset-3 edit-btn mobile-fit-btn">Edit</a>
     <form method="post" action="/listings/<%=listing._id%>?_method=DELETE">
         <button class="btn btn-dark offset-5">Delete</button>
     </form>
@@ -54,9 +86,9 @@
     <input type="radio" id="first-rate5" name="review[rating]" value="5" />
     <label for="first-rate5" title="Amazing">5 stars</label>
   </fieldset>
-<div class="mb-3 mt-3">
+<div class="mb-3 mt-3 ">
     <label for="comment" class="form-label">Comments</label>
-    <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+    <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required "></textarea>
     <div class="invalid-feedback">Please add some comments for review</div>
 </div>
 <button class="btn btn-outline-dark">Submit</button>
@@ -83,7 +115,7 @@
 </div>
 <div class="col-6 offset-3 mb-3">
     <h3>Where you'll be</h3>
-    <div id="map">
+    <div id="map" style="border: 2px solid black">
 
 </div>
     </div>
